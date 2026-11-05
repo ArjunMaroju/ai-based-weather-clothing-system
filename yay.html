@@ -1,0 +1,97 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather Clothing Recommender</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            background: #eaf2ff;
+            padding: 40px;
+        }
+
+        .container {
+            background: white;
+            padding: 30px;
+            border-radius: 15px;
+            max-width: 400px;
+            margin: auto;
+        }
+
+        input, select, button {
+            padding: 10px;
+            margin: 10px;
+            width: 80%;
+        }
+
+        button {
+            background: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 18px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>AI Weather Clothing Recommender</h2>
+
+    <p>Enter Temperature:</p>
+    <input type="number" id="temp" placeholder="Temperature in °C">
+
+    <p>Weather Condition:</p>
+    <select id="weather">
+        <option value="sunny">Sunny</option>
+        <option value="rainy">Rainy</option>
+        <option value="cold">Cold</option>
+        <option value="cloudy">Cloudy</option>
+    </select>
+
+    <br>
+
+    <button onclick="recommend()">Recommend Clothes</button>
+
+    <div id="result"></div>
+
+</div>
+
+<script>
+function recommend() {
+
+    let temp = Number(document.getElementById("temp").value);
+    let weather = document.getElementById("weather").value;
+    let result = "";
+
+    if (document.getElementById("temp").value === "") {
+        result = "Please enter temperature.";
+    }
+    else if (weather === "rainy") {
+        result = "Wear a Raincoat and Waterproof Shoes 🌧️";
+    }
+    else if (temp <= 15 || weather === "cold") {
+        result = "Wear a Jacket and Sweater 🧥";
+    }
+    else if (temp >= 30) {
+        result = "Wear a Cotton T-Shirt and Shorts ☀️";
+    }
+    else {
+        result = "Wear a Casual Shirt and Jeans 👕";
+    }
+
+    document.getElementById("result").innerHTML =
+        "<h3>Recommended Outfit</h3>" + result;
+}
+</script>
+
+</body>
+</html>
